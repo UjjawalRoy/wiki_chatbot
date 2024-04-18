@@ -9,6 +9,8 @@ chat_start_messages = (
     "greetings",
     "good morning",
     "good afternoon",
+    "hello?",
+    "hi?"
 )
 chat_start_responses = [
     "Hello! How can I assist you today?",
@@ -22,7 +24,8 @@ chat_start_responses = [
     "Hi! What can I do for you?",
     "Hey there! How can I assist you?",
 ]
+answer_not_found_message = "Oops! I apologize, I did not get that. Please be more specific..."
 
-lemmatized_words_list_filename = 'databases/word_tokens.txt'
-tokenized_sentences_filename = 'databases/sentence_tokens.txt'
+lemmatized_words_list_filename = 'D:/Data Science/practice_projects/wiki_chatbot/databases/word_tokens.txt'
+tokenized_sentences_filename = 'D:/Data Science/practice_projects/wiki_chatbot/databases/sentence_tokens.txt'
 

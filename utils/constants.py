@@ -1,0 +1,1 @@
+db_creation_success_message = "Database successfully created"

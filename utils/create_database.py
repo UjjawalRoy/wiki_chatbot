@@ -1,10 +1,11 @@
 import os
 
 from generate_output.constants import lemmatized_words_list_filename, tokenized_sentences_filename
-from generate_output.preprocess import preprocess_data
+from generate_output.preprocess import preprocess_data, tokenize_sent
+from utils.constants import db_creation_success_message
 
 
-def dump_db(data, input_string):
+def dump_db(data):
     if not os.path.exists(lemmatized_words_list_filename):
         with open(lemmatized_words_list_filename, 'w'):
             pass
@@ -12,14 +13,13 @@ def dump_db(data, input_string):
         with open(tokenized_sentences_filename, 'w'):
             pass
 
-    lemmatized_tokens_list, tokenized_sentences = preprocess_data(data=data, input_string=input_string)
+    lemmatized_tokens_list = preprocess_data(input_string=data)
+    tokenized_sentences = tokenize_sent(input_string=data)
 
     with open(lemmatized_words_list_filename, 'w') as file:
-        # Write the text to the file
         file.write(str(lemmatized_tokens_list))
 
     with open(tokenized_sentences_filename, 'w') as file:
-        # Write the text to the file
         file.write(str(tokenized_sentences))
 
-    return "Database successfully created"
+    return db_creation_success_message
