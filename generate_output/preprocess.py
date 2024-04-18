@@ -1,9 +1,7 @@
-import os
+import re
 
 import nltk
 from nltk.stem import WordNetLemmatizer
-import re
-from constants import lemmatized_words_list_filename, tokenized_sentences_filename
 
 lemattizer = WordNetLemmatizer()
 
@@ -12,9 +10,11 @@ def find_paragraphs(raw_data):
     return raw_data.find_all('p')
 
 
-def remove_unwanted_characters(input_str):
-    pattern = r'\[\d+\]|\[\d+\.\d+\]|\\[nrt]'
-    return re.sub(pattern, ' ', input_str)
+def remove_unwanted_characters(input_str: str):
+    pattern = re.compile(r'\b[a-zA-Z,.!?]+\b')
+    english_words = pattern.findall(input_str)
+    cleaned_text = ' '.join(english_words)
+    return cleaned_text
 
 
 def remove_punctuations(input_str):
@@ -35,3 +35,13 @@ def lemmatize_text(tokens):
     return lemmatized_token_list
 
 
+def preprocess_data(data, input_string):
+    paragraphs = find_paragraphs(raw_data=data)
+    for paragraph in paragraphs:
+        input_string += paragraph.text
+    input_string = remove_unwanted_characters(input_str=input_string)
+    tokenized_sentences = nltk.sent_tokenize(input_string)
+    input_string = remove_punctuations(input_str=input_string).lower()
+    _, tokenized_words = tokenize_data(data=input_string)
+    lemmatized_tokens_list = lemmatize_text(tokenized_words)
+    return lemmatized_tokens_list, tokenized_sentences

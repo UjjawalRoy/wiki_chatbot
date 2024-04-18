@@ -1,19 +1,15 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+import ast
 
-from generate_output.preprocess import preprocess_data, find_paragraphs, remove_unwanted_characters, \
-    remove_punctuations, tokenize_data, lemmatize_text
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+from generate_output.preprocess import lemmatize_text, preprocess_data
+from generate_output.constants import lemmatized_words_list_filename, tokenized_sentences_filename
 
 vectorizer = TfidfVectorizer(tokenizer=preprocess_data, stop_words='english')
 
-def preprocess_data(data, input_string):
-    paragraphs = find_paragraphs(raw_data=data)
-    input_string += paragraphs.text
-    input_string = remove_unwanted_characters(input_str=input_string)
-    input_string = remove_punctuations(input_str=input_string).lower()
-    tokenized_sentences, tokenized_words = tokenize_data(data=input_string)
-    lemmatized_tokens_list = lemmatize_text(tokenized_words)
-    return lemmatized_tokens_list, tokenized_sentences
+with open(tokenized_sentences_filename, 'r') as f:
+    sentence_tokens = f.read()
+    sentence_tokens = ast.literal_eval(sentence_tokens)
 
 def repond(user_query):
     word_vectors = vectorizer.fit_transform()
