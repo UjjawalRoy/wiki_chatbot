@@ -39,7 +39,7 @@ def preprocess_data(data, input_string):
     paragraphs = find_paragraphs(raw_data=data)
     for paragraph in paragraphs:
         input_string += paragraph.text
-				input_string = input_string.encode('ascii', errors='ignore').decode("utf-8")
+input_string = input_string.encode('ascii', errors='ignore').decode("utf-8")
     input_string = remove_unwanted_characters(input_str=input_string)
     tokenized_sentences = nltk.sent_tokenize(input_string)
     input_string = remove_punctuations(input_str=input_string).lower()
