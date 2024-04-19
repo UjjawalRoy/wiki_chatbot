@@ -1,8 +1,6 @@
 from ast import literal_eval
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
 from generate_output.constants import answer_not_found_message
 from utils.constants import tokenized_sentences_filename
 from generate_output.preprocess import preprocess_data
@@ -16,6 +14,15 @@ with open(tokenized_sentences_filename, 'r') as f:
 
 
 def respond(user_query):
+    """
+    Generate a response to the user query.
+
+    Args:
+        user_query (str): The user's query.
+
+    Returns:
+        str: The response to the user's query.
+    """
     start, start_response = start_chat_responses(user_query)
     end, end_response = end_chat_responses(user_query)
     if start:

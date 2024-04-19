@@ -1,14 +1,13 @@
 import json
-
 import streamlit as st
 import requests
-
 from custom_logger import get_logger
 
 logger = get_logger('frontend')
 
 
 def create_database_page():
+    """Page for creating a database."""
     st.title("Create Database")
     url = st.text_input("Enter Wiki URL")
     if st.button("Submit"):
@@ -20,6 +19,7 @@ def create_database_page():
 
 
 def ask_question_page():
+    """Page for asking a question."""
     st.title("Ask Wiki Question")
     query = st.selectbox("Suggested questions", ["What is artificial intelligence?",
                                                  "Where is AI technology used?",
@@ -46,20 +46,9 @@ def ask_question_page():
 
         st.session_state.messages.append({"role": "assistant", "content": response.json()})
 
-    # question = st.text_input("Enter your question")
-    # if st.button("Ask"):
-    #     response = ''
-    #     if question:
-    #         response = requests.post("http://localhost:8001/ask", data=json.dumps({"query": question.lower()}))
-    #     else:
-    #         response = requests.post("http://localhost:8001/ask", data=json.dumps({"query": query.lower()}))
-    #     if response.status_code == 200:
-    #         st.success("Answer: " + response.json())
-    #     else:
-    #         st.error("Error asking question")
-
 
 def main():
+    """Main function to run the Streamlit application."""
     st.sidebar.title("Navigation")
     page = st.sidebar.selectbox("Select a page", ["Create Database", "Ask Question"])
 
