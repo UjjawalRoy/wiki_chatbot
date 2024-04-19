@@ -3,9 +3,10 @@ from ast import literal_eval
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from generate_output.constants import tokenized_sentences_filename, answer_not_found_message
+from generate_output.constants import answer_not_found_message
+from utils.constants import tokenized_sentences_filename
 from generate_output.preprocess import preprocess_data
-from generate_output.qa_pipeline import start_chat_responses
+from generate_output.qa_pipeline import start_chat_responses, end_chat_responses
 
 vectorizer = TfidfVectorizer(tokenizer=preprocess_data, stop_words='english')
 
@@ -15,9 +16,12 @@ with open(tokenized_sentences_filename, 'r') as f:
 
 
 def respond(user_query):
-    ret, response = start_chat_responses(user_query)
-    if ret:
-        return response
+    start, start_response = start_chat_responses(user_query)
+    end, end_response = end_chat_responses(user_query)
+    if start:
+        return start_response
+    if end:
+        return end_response
     sentence_tokens.append(user_query)
     sentence_vecs = vectorizer.fit_transform(sentence_tokens)
     score = cosine_similarity(sentence_vecs[-1], sentence_vecs)

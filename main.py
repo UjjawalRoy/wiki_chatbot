@@ -8,7 +8,9 @@ from typing import Union
 from utils.create_database import dump_db
 from generate_output.preprocess import find_paragraphs
 from generate_output.responder import respond
+from custom_logger import get_logger
 
+logger = get_logger('main')
 app = FastAPI()
 
 
@@ -33,16 +35,23 @@ async def create_database(page_url: PageUrl):
     input_string = ''
     for paragraph in paragraphs:
         input_string += paragraph.text
-    response = dump_db(data=input_string)
-    return response
+    try:
+        response = dump_db(data=input_string)
+        return response
+    except Exception as e:
+        logger.info(e)
+        return 'I am unable to do that right now...'
 
 
 @app.post("/ask")
 async def ask_question(user_query: UserQuery):
     user_query = user_query.query
-    response = respond(user_query)
-    return response
-
+    try:
+        response = respond(user_query)
+        return response
+    except Exception as e:
+        logger.info(e)
+        return 'I am unable to do that right now...'
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8001, reload=True)

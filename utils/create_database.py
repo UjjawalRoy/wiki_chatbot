@@ -1,6 +1,6 @@
 import os
 
-from generate_output.constants import lemmatized_words_list_filename, tokenized_sentences_filename
+from utils.constants import lemmatized_words_list_filename, tokenized_sentences_filename
 from generate_output.preprocess import preprocess_data, tokenize_sent
 from utils.constants import db_creation_success_message
 
