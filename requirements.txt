@@ -1,0 +1,9 @@
+numpy
+scikit-learn
+fastapi
+pydantic
+streamlit
+nltk
+chardet
+beautifulsoup4
+uvicorn
