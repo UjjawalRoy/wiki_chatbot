@@ -55,3 +55,4 @@ Enjoy querying the Wikipedia chatbot for relevant information!
 - https://github.com/RajkumarGalaxy/Wiki-IR-ChatBot
 - https://youtu.be/sBhK-2K9bUc?si=onKci3aW0q1NkAUA
 - https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
+- https://realpython.com/chromadb-vector-database/#meet-chromadb-for-llm-applications
