@@ -3,7 +3,11 @@
 
 ## What is Wikipedia chatbot?
 
-A Wikipedia chatbot is a chatbot based on a relevant information retrieval system. It utilizes TF-IDF vectorizers to vectorize the data scraped from Wikipedia. Subsequently, it can answer users' queries by retrieving relevant information from the Wikipedia dataset.
+This Wikipedia chatbot is based on a relevant information retrieval system. It utilizes seq2seq vectorizer 
+for semantic search and
+TF-IDF vectorizer for information retrieval
+to embed the data scraped from Wikipedia. Subsequently, it can answer users' queries by retrieving relevant information 
+from the Wikipedia dataset.
 
 ## How to Install
 
