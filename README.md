@@ -40,9 +40,13 @@ A Wikipedia chatbot is a chatbot based on a relevant information retrieval syste
 ## Usage
 
 1. In the Streamlit app, click on the "Create Database" tab.
-2. Paste the URL of the Wikipedia page you want to use and click "Submit".
-3. Once submitted, navigate to the "Ask Question" tab.
-4. Use the chatbot to ask questions related to the Wikipedia page you previously stored in the database.
+2. Choose the type of database you want to create.
+3. Delete the chromadb folder under the databases directory first before creating a new database.
+4. Paste the URL of the Wikipedia page you want to use and click "Submit".
+5. Once submitted, navigate to the "Ask Question" tab.
+6. Make sure if 'Vector database' was not chosen earlier, navigate to main.py and set semantic_query=False in the 
+   'ask_question' function.
+7. Use the chatbot to ask questions related to the Wikipedia page you previously stored in the database.
 
 Enjoy querying the Wikipedia chatbot for relevant information!
 
