@@ -14,7 +14,7 @@ from the Wikipedia dataset.
 1. Clone the repository:
 
     ```
-    git clone https://github.com/yourusername/wikipedia-chatbot.git
+    https://github.com/UjjawalRoy/wiki_chatbot
     ```
 
 2. Navigate to the project directory:
