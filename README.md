@@ -3,9 +3,11 @@
 
 ## What is Wikipedia chatbot?
 
-This Wikipedia chatbot is based on a relevant information retrieval system. It utilizes seq2seq vectorizer 
+This Wikipedia chatbot is based on a relevant information retrieval system. It utilizes a small transformer based 
+encoder model as a
+vectorizer 
 for semantic search and
-TF-IDF vectorizer for information retrieval
+TF-IDF vectorizer for information retrieval,
 to embed the data scraped from Wikipedia. Subsequently, it can answer users' queries by retrieving relevant information 
 from the Wikipedia dataset.
 
