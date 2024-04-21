@@ -12,7 +12,7 @@ from utils.create_database import dump_db
 from generate_output.preprocess import find_paragraphs
 from generate_output.responder import respond, semantic_responder
 from custom_logger import get_logger
-# from utils.create_vector_database import create_vector_db
+from utils.create_vector_database import create_vector_db
 
 logger = get_logger('main')
 app = FastAPI()
@@ -59,7 +59,6 @@ async def create_database(page_url: PageUrl):
         elif page_url.db_type.lower() == 'vector database':
             # if os.path.exists(chroma_data_path):
             #     shutil.rmtree(chroma_data_path)
-            from utils.create_vector_database import create_vector_db
             response = create_vector_db(data=input_string)
             return response
     except Exception as e:
